@@ -4,8 +4,11 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Main Menu</mat-toolbar>
-    <mat-nav-list>
+    <mat-nav-list *ngIf="!(isHandset$ | async)">
       <a *ngFor="let item of menuItems" mat-list-item [routerLink]="'/'+item"> {{ item | titlecase }} </a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="isHandset$ | async">
+      <a *ngFor="let item of menuItems" mat-list-item [routerLink]="'/'+item" (click)="drawer.toggle()"> {{ item | titlecase }} </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -1,1 +1,48 @@
-<p>view-inventory works!</p>
+<!-- <div class="grid-container">
+  <h1 class="mat-h1">View T-Shirt Blanks Inventory</h1>
+
+  <mat-grid-list cols="15" rowHeight="125px">
+    <mat-grid-tile *ngFor="let blank of tShirtBlanks" colspan="1" rowspan="1">
+      <mat-card class="dashboard-card">
+        <a (click)="newBlankSelection($event.target.value)"><img mat-card-image [src]="blank.frontPic.url" [value]="blank.id"></a>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="8" rowHeight="275px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+          </mat-card-title>
+        </mat-card-header>
+        <img *ngIf="card.title=='Front'" mat-card-image [src]="currentBlank.frontPic.url">
+        <img *ngIf="card.title=='Back'" mat-card-image [src]="currentBlank.backPic.url">
+        <mat-card-content class="dashboard-card-content">
+          <div *ngIf="card.title=='Select'">
+            <mat-form-field appearance="outline">
+              <mat-label>T-Shirt Blank</mat-label>
+              <mat-select (selectionChange)="newBlankSelection($event.value)">
+                <mat-option *ngFor="let blank of tShirtBlanks" [value]="blank.id">
+                  {{ blank.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div> -->
+
+
+<div class="container">
+  <h1 class="mat-h1">View T-Shirt Blanks Inventory</h1>
+
+  <div class="select-row">
+    <div *ngFor="let blank of tShirtBlanks">
+      <a (click)="newBlankSelection($event.target.value)"><img mat-card-image [src]="blank.frontPic.url" [value]="blank.id"></a>
+    </div>
+  </div>
+</div>
