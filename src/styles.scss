@@ -1,0 +1,27 @@
+@import './myColors.scss';
+
+@import '~@angular/material/theming';
+$primary: mat-palette($my-brand-color, 700, 500, 900);
+$accent:  mat-palette($mat-blue-grey, A200, A100, A400);
+
+$theme: mat-dark-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+  )
+));
+
+@mixin background {
+  background-color: map-get($mat-dark-theme-background, card);
+}
+
+@include angular-material-theme($theme);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

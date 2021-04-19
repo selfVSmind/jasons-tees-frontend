@@ -1,0 +1,67 @@
+@import './../../myColors.scss';
+@import '~@angular/material/theming';
+$primary: mat-palette($my-brand-color, 700, 500, 900);
+
+
+@font-face {
+  font-family: "Turok";
+  src: url("../../assets/turok-font.otf") format("opentype");
+}
+  
+
+.about-hero-header {
+    height: 50vh;
+    background-color: mat-color($primary);
+    overflow: hidden;
+}
+
+.about-hero-header img {
+    display: block;
+    margin: auto;
+    padding-top: 10vh;
+    text-align: center;
+    max-height: 40vh;
+    max-width: 100%;
+}
+
+.about-main-container {
+    padding-top: 15vh;
+    text-align: justify;
+    text-justify: inter-word;
+    margin: auto;
+    width: 90%;
+    max-width: 100%;
+}
+
+.about-main-container h1 {
+    font-family: "Turok";
+    letter-spacing: 2px;
+}
+
+
+.about-main-container .section-content {
+    width: 100%;
+}
+
+.about-main-container .section .section-content .header {
+    text-align: center;
+    border-bottom: 2px solid;
+}
+
+.about-main-container .section {
+    min-height: 275px;
+}
+
+.about-main-container .section-image .section-image {
+    max-width: 100%;
+}
+
+.about-main-container .section:nth-child(odd) .section-image { 
+    float: right;
+    margin-left: 30px;
+}
+
+.about-main-container .section:nth-child(even) .section-image {
+    float: left;
+    margin-right: 30px;
+}

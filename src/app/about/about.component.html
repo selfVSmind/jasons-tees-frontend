@@ -1,0 +1,17 @@
+<div class="about-hero-header">
+    <img src="assets/images/jasons-tees-logo.png">
+</div>
+
+<div class="about-main-container">
+    <div *ngFor="let section of aboutPageTextSections" class="section">
+        <div class="section-image">
+            <img src="assets/images/jasons-tees-logo.png">
+        </div>
+        <div class="section-content">
+            <div class="header">
+                <h1>{{ section.header }}</h1>
+            </div>
+            <p [innerHtml]="section.content"></p>
+        </div>
+    </div>
+</div>
