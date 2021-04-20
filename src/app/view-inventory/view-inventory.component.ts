@@ -38,11 +38,12 @@ export class ViewInventoryComponent implements OnInit {
       if (matches) {
         return [
           { title: 'Front', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
+          { title: 'Select', cols: 1, rows: 1 },
+          { title: 'Counts', cols: 1, rows: 1 },
+          { title: 'Back', cols: 1, rows: 1 },
+          { title: 'Card 5', cols: 1, rows: 1 }
         ];
-      }
+        }
 
       return [
         { title: 'Front', cols: 2, rows: 2 },
