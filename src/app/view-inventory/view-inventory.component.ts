@@ -31,6 +31,7 @@ interface TShirtBlank {
 export class ViewInventoryComponent implements OnInit {
   currentBlank: TShirtBlank;
   tShirtBlanks: Array<TShirtBlank>;
+  imageWidth = 300;
 
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
