@@ -1,8 +1,8 @@
 <div class="container">
   <h1 class="mat-h1">View T-Shirt Blanks Inventory</h1>
 
-  <div fxLayout="row" fxLayoutAlign="start start" class="select-row">
-    <div *ngFor="let blank of tShirtBlanks" fxFlex="20" fxFlex.gt-sm="10">
+  <div fxLayout="row" fxLayoutAlign="center start" class="select-row">
+    <div *ngFor="let blank of tShirtBlanks" fxFlex="20" fxFlex.gt-sm="15" [ngClass]="blank.id === currentBlank.id ? 'selected-blank' : 'not-selected-blank'">
       <a (click)="newBlankSelection($event.target.getAttribute('blankId'))"><img mat-card-image class="blank-selector" [src]="blank.frontPic.url + '?fm=jpg&w=' + imageWidth" [attr.blankId]="blank.id"></a>
     </div>
   </div>
