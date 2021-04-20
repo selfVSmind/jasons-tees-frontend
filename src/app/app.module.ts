@@ -25,20 +25,18 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 
-// import { AboutComponent } from './about/about.component';
-// import { ProfileComponent } from './profile/profile.component';
-// import { DesignsComponent } from './designs/designs.component';
+import { ChartsModule } from 'ng2-charts';
+
 // import { GraphicCardComponent } from './create-shirt/graphic-card/graphic-card.component';
 // import { DemographicCardComponent } from './create-shirt/demographic-card/demographic-card.component';
 // import { SpecificationsCardComponent } from './create-shirt/specifications-card/specifications-card.component';
-// import { ViewInventoryComponent } from './view-inventory/view-inventory.component';
-// import { CreateShirtComponent } from './create-shirt/create-shirt.component';
 import { NavComponent } from './nav/nav.component';
 import { AboutComponent } from './about/about.component';
 import { DesignsComponent } from './designs/designs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateShirtComponent } from './create-shirt/create-shirt.component';
 import { ViewInventoryComponent } from './view-inventory/view-inventory.component';
+import { TShirtBlankCountsChartComponent } from './view-inventory/charts/t-shirt-blank-counts-chart/t-shirt-blank-counts-chart.component';
 
 @NgModule({
   declarations: [
@@ -49,14 +47,10 @@ import { ViewInventoryComponent } from './view-inventory/view-inventory.componen
     ProfileComponent,
     CreateShirtComponent,
     ViewInventoryComponent,
-    // CreateShirtComponent,
+    TShirtBlankCountsChartComponent,
     // GraphicCardComponent,
     // DemographicCardComponent,
     // SpecificationsCardComponent,
-    // ViewInventoryComponent,
-    // AboutComponent,
-    // ProfileComponent,
-    // DesignsComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +71,8 @@ import { ViewInventoryComponent } from './view-inventory/view-inventory.componen
     MatInputModule,
     HttpClientModule,
     MatSelectModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ChartsModule
   ],
   providers: [
     {

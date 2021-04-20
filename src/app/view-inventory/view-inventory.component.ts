@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
 
@@ -38,13 +39,11 @@ export class ViewInventoryComponent implements OnInit {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Front', cols: 1, rows: 1 },
-          { title: 'Select', cols: 1, rows: 1 },
+          { title: 'Front', cols: 1, rows: 2 },
           { title: 'Counts', cols: 1, rows: 1 },
-          { title: 'Back', cols: 1, rows: 1 },
-          { title: 'Card 5', cols: 1, rows: 1 }
+          { title: 'Back', cols: 1, rows: 2 }
         ];
-        }
+      }
 
       return [
         { title: 'Front', cols: 2, rows: 2 },
@@ -54,6 +53,12 @@ export class ViewInventoryComponent implements OnInit {
         { title: 'Card 5', cols: 1, rows: 1 }
       ];
     })
+  );
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  .pipe(
+    map(result => result.matches),
+    shareReplay()
   );
 
   url = "https://t-shirts.jasonlambert.io/getTshirtBlankData";
