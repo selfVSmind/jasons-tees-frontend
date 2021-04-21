@@ -40,8 +40,8 @@ export class ViewInventoryComponent implements OnInit {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Front', cols: 1, rows: 2 },
           { title: 'Counts', cols: 1, rows: 1 },
+          { title: 'Front', cols: 1, rows: 2 },
           { title: 'Back', cols: 1, rows: 2 }
         ];
       }
