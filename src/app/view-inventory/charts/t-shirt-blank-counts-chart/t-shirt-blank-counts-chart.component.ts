@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { WHITE_ON_BLACK_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
 
@@ -23,8 +24,20 @@ export class TShirtBlankCountsChartComponent implements OnInit {
       yAxes: [{
          ticks: {
             max: 20,
-            min: 0
+            min: 0,
+            fontColor: 'white'
+          },
+          gridLines: {
+            color: 'grey'
           }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: 'white'
+        },
+        gridLines: {
+          color: 'grey'
+        }
       }]
     }
   };
@@ -32,6 +45,11 @@ export class TShirtBlankCountsChartComponent implements OnInit {
   public barChartType: ChartType = 'bar';
   public barChartLegend = false;
   public barChartPlugins = [];
+  public barChartColors: Array<any> = [
+    { // first color
+      backgroundColor: '#0288d1'
+    }
+  ];
 
   public barChartData: ChartDataSets[] = [];
 
