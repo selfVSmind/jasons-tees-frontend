@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
 
@@ -9,12 +9,20 @@ import { Label } from 'ng2-charts';
 })
 export class TShirtBlankCountsChartComponent implements OnInit {
 
+  @Input() prices: Array<number>;
+
+  public ngOnChanges(changes: SimpleChanges) {
+    if ('prices' in changes) {
+        this.barChartData[0].data = changes['prices'].currentValue;
+     }
+  }       
+
   public barChartOptions: ChartOptions = {
     responsive: true,
     scales : {
       yAxes: [{
          ticks: {
-            max: 25,
+            max: 20,
             min: 0
           }
       }]
@@ -25,13 +33,12 @@ export class TShirtBlankCountsChartComponent implements OnInit {
   public barChartLegend = false;
   public barChartPlugins = [];
 
-  public barChartData: ChartDataSets[] = [
-    { data: [5, 9, 8, 1, 6, 5, 4, 0, 0, 0] }
-  ];
+  public barChartData: ChartDataSets[] = [];
 
   constructor() { }
 
   ngOnInit() {
+    this.barChartData.push({ data: this.prices });
   }
 
 }

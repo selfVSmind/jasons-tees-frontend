@@ -31,6 +31,7 @@ interface TShirtBlank {
 })
 export class ViewInventoryComponent implements OnInit {
   currentBlank: TShirtBlank;
+  currentBlankPrices: Array<number>;
   tShirtBlanks: Array<TShirtBlank>;
   imageWidth = 300;
 
@@ -72,7 +73,7 @@ export class ViewInventoryComponent implements OnInit {
       console.log(JSON.stringify(jsonData, null, 2));
       if(jsonData.hasOwnProperty('data')) {
         this.tShirtBlanks = jsonData['data'];
-        this.currentBlank = this.tShirtBlanks[0];
+        this.setBlank(this.tShirtBlanks[0]);
       }
     });
   }
@@ -80,11 +81,16 @@ export class ViewInventoryComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  private setBlank(blank) {
+    this.currentBlank = blank;
+    this.currentBlankPrices = [blank.countS, blank.countM, blank.countL, blank.countXL, blank.count2XL, blank.count3XL, blank.count4XL, blank.count5XL, blank.count6XL, blank.count7XL];
+  }
+
   newBlankSelection(selectedBlankId) {
     console.log(selectedBlankId);
     this.tShirtBlanks.forEach((blank) => {
       if(selectedBlankId === blank.id) {
-        this.currentBlank = blank;
+        this.setBlank(blank);
       }
     });
   }

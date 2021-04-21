@@ -29,7 +29,7 @@
             </mat-form-field>
           </div>
           <div *ngIf="card.title=='Counts'" class="counts-chart">
-            <app-t-shirt-blank-counts-chart></app-t-shirt-blank-counts-chart>
+            <app-t-shirt-blank-counts-chart [prices]="currentBlankPrices"></app-t-shirt-blank-counts-chart>
           </div>
         </mat-card-content>
       </mat-card>
