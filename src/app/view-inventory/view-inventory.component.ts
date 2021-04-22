@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
 
@@ -36,13 +35,45 @@ export class ViewInventoryComponent implements OnInit {
   imageWidth = 300;
 
   /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+  // cards = this.breakpointObserver.observe([
+  //     Breakpoints.Handset,
+  //     Breakpoints.Tablet
+  //   ]).subscribe((state: BreakpointState) => {
+  //     if (state.breakpoints[Breakpoints.Handset]) {
+  //       return [
+  //         { title: 'Counts', cols: 1, rows: 1 },
+  //         { title: 'Front', cols: 1, rows: 2 },
+  //         { title: 'Back', cols: 1, rows: 2 }
+  //       ];
+  //     }
+  //     if (state.breakpoints[Breakpoints.Tablet]) {
+  //       return [
+  //         { title: 'Counts', cols: 1, rows: 1 },
+  //         { title: 'Front', cols: 1, rows: 2 },
+  //         { title: 'Back', cols: 1, rows: 2 }
+  //       ];
+  //     }
+  //     return [
+  //       { title: 'Front', cols: 2, rows: 2 },
+  //       { title: 'Select', cols: 2, rows: 1 },
+  //       { title: 'Counts', cols: 4, rows: 2 },
+  //       { title: 'Back', cols: 1, rows: 1 },
+  //       { title: 'Card 5', cols: 1, rows: 1 }
+  //     ];
+  //   });
+  
+  
+  
+  
+  
+  
+  cards = this.breakpointObserver.observe('(max-width: 960px)').pipe(
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Counts', cols: 1, rows: 1 },
-          { title: 'Front', cols: 1, rows: 2 },
-          { title: 'Back', cols: 1, rows: 2 }
+          { title: 'Counts', cols: 8, rows: 1 },
+          { title: 'Front', cols: 8, rows: 2 },
+          { title: 'Back', cols: 8, rows: 2 }
         ];
       }
 
@@ -54,12 +85,6 @@ export class ViewInventoryComponent implements OnInit {
         { title: 'Card 5', cols: 1, rows: 1 }
       ];
     })
-  );
-
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-  .pipe(
-    map(result => result.matches),
-    shareReplay()
   );
 
   url = "https://t-shirts.jasonlambert.io/getTshirtBlankData";

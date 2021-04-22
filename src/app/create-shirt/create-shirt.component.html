@@ -1,1 +1,40 @@
-<p>create-shirt works!</p>
+<div class="grid-container">
+    <h1 class="mat-h1">Create T-Shirt Mockup</h1>
+    <div class="my-stepper-container">
+      <mat-horizontal-stepper linear="true" [@.disabled]="true" media="(min-width: 900px)">
+  
+        <mat-step label="Choose Graphic"></mat-step>
+        <mat-step label="Select Demographic"></mat-step>
+        <mat-step label="Provide Details And Make Color Choices"></mat-step>
+        <!-- <ng-template matStepperIcon="graphic">
+          <mat-icon>call_end</mat-icon>
+        </ng-template> -->
+      
+      </mat-horizontal-stepper>
+    </div>
+   
+    <mat-grid-list cols="18" rowHeight="175px">
+      <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              {{card.title}}
+              <!-- <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item>Expand</button>
+                <button mat-menu-item>Remove</button>
+              </mat-menu> -->
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div *ngIf="card.title=='Demographic'"><app-demographic-card></app-demographic-card></div>
+            <div *ngIf="card.title=='Specifications'"><app-specifications-card></app-specifications-card></div>
+            <div *ngIf="card.title=='Design Graphic'"><app-graphic-card></app-graphic-card></div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  

@@ -7,7 +7,7 @@
     </div>
   </div>
 
-  <mat-grid-list [cols]="(isHandset$ | async) ? 1 : 8" rowHeight="275px">
+  <mat-grid-list [cols]="8" rowHeight="275px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <mat-card-header>

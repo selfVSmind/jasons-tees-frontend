@@ -1,0 +1,10 @@
+.ng2-chart {
+    display: block;
+    margin: auto;
+}
+
+@media only screen and (max-width: 960px) {
+    .ng2-chart {
+        max-width: 420px;
+    }
+}

@@ -37,6 +37,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { CreateShirtComponent } from './create-shirt/create-shirt.component';
 import { ViewInventoryComponent } from './view-inventory/view-inventory.component';
 import { TShirtBlankCountsChartComponent } from './view-inventory/charts/t-shirt-blank-counts-chart/t-shirt-blank-counts-chart.component';
+import { DemographicCardComponent } from './create-shirt/demographic-card/demographic-card.component';
+import { GraphicCardComponent } from './create-shirt/graphic-card/graphic-card.component';
+import { SpecificationsCardComponent } from './create-shirt/specifications-card/specifications-card.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,9 @@ import { TShirtBlankCountsChartComponent } from './view-inventory/charts/t-shirt
     CreateShirtComponent,
     ViewInventoryComponent,
     TShirtBlankCountsChartComponent,
+    DemographicCardComponent,
+    GraphicCardComponent,
+    SpecificationsCardComponent,
     // GraphicCardComponent,
     // DemographicCardComponent,
     // SpecificationsCardComponent,
