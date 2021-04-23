@@ -45,7 +45,7 @@ export class GraphicCardComponent implements OnInit {
     const smallDialogSubscription = this.isXSmall.subscribe(result => {
       if(result.matches) {
         // width, height
-        dialogRef.updateSize('90%', '90%');
+        dialogRef.updateSize('85%', '85%');
       } else {
         dialogRef.updateSize('75%', '75%');
       }
