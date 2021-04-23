@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { LayoutModule } from '@angular/cdk/layout';
-import { FlexLayoutModule } from '@angular/flex-layout'
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,24 +21,22 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-
-import { AppRoutingModule } from './app-routing.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { ChartsModule } from 'ng2-charts';
 
-// import { GraphicCardComponent } from './create-shirt/graphic-card/graphic-card.component';
-// import { DemographicCardComponent } from './create-shirt/demographic-card/demographic-card.component';
-// import { SpecificationsCardComponent } from './create-shirt/specifications-card/specifications-card.component';
+import { AppRoutingModule } from './app-routing.module';
 import { NavComponent } from './nav/nav.component';
 import { AboutComponent } from './about/about.component';
 import { DesignsComponent } from './designs/designs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateShirtComponent } from './create-shirt/create-shirt.component';
 import { ViewInventoryComponent } from './view-inventory/view-inventory.component';
-import { TShirtBlankCountsChartComponent } from './view-inventory/charts/t-shirt-blank-counts-chart/t-shirt-blank-counts-chart.component';
-import { DemographicCardComponent } from './create-shirt/demographic-card/demographic-card.component';
-import { GraphicCardComponent } from './create-shirt/graphic-card/graphic-card.component';
-import { SpecificationsCardComponent } from './create-shirt/specifications-card/specifications-card.component';
+import { TShirtBlankCountsChartComponent } from './view-inventory/t-shirt-blank-counts-chart/t-shirt-blank-counts-chart.component';
+import { DemographicCardComponent } from './create-shirt/cards/demographic-card/demographic-card.component';
+import { GraphicCardComponent } from './create-shirt/cards/graphic-card/graphic-card.component';
+import { SpecificationsCardComponent } from './create-shirt/cards/specifications-card/specifications-card.component';
+import { GraphicCardDialogComponent } from './create-shirt/cards/graphic-card/graphic-card-dialog/graphic-card-dialog.component';
 
 @NgModule({
   declarations: [
@@ -54,9 +51,7 @@ import { SpecificationsCardComponent } from './create-shirt/specifications-card/
     DemographicCardComponent,
     GraphicCardComponent,
     SpecificationsCardComponent,
-    // GraphicCardComponent,
-    // DemographicCardComponent,
-    // SpecificationsCardComponent,
+    GraphicCardDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,7 +73,9 @@ import { SpecificationsCardComponent } from './create-shirt/specifications-card/
     HttpClientModule,
     MatSelectModule,
     FlexLayoutModule,
-    ChartsModule
+    ChartsModule,
+    MatDialogModule,
+    FormsModule
   ],
   providers: [
     {
@@ -86,6 +83,9 @@ import { SpecificationsCardComponent } from './create-shirt/specifications-card/
       useValue: { displayDefaultIndicatorType: false }
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    GraphicCardDialogComponent
+  ]
 })
 export class AppModule { }

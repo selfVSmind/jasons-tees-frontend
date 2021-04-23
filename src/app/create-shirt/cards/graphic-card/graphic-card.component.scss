@@ -1,0 +1,10 @@
+@import '~@angular/material/theming';
+
+::ng-deep mat-dialog-container {
+    background-color: map-get($mat-dark-theme-background, background) !important;
+}
+
+img {
+    max-width: 100%;
+    max-height: 220px;
+}

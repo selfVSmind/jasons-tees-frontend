@@ -1,0 +1,24 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Select Pre-Made Graphic</h1>
+
+  <div mat-dialog-actions class="upload-button-container">
+    <button mat-button (click)="onCancel()">Or Upload Your Own '.ai' File</button>
+    <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+  </div>
+  <br>
+  
+  <mat-grid-list [cols]="(isHandset$ | async) ? '1' : '2'" rowHeight="350px">
+    <mat-grid-tile *ngFor="let cutFile of cutFiles" colspan="1" rowspan="1">
+      <mat-card (click)="cardClick(cutFile.id)" class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{ cutFile.name }}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <img [src]="cutFile.imgUrl">
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

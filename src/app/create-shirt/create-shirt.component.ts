@@ -15,7 +15,7 @@ export class CreateShirtComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Design Graphic', cols: 18, rows: 2 },
+          { title: 'Custom Graphic', cols: 18, rows: 2 },
           { title: 'Demographic', cols: 18, rows: 1 },
           { title: 'Specifications', cols: 18, rows: 2 },
           { title: 'Colors', cols: 18, rows: 2 }
@@ -23,7 +23,7 @@ export class CreateShirtComponent {
       }
 
       return [
-        { title: 'Design Graphic', cols: 4, rows: 2 },
+        { title: 'Custom Graphic', cols: 4, rows: 2 },
         { title: 'Demographic', cols: 4, rows: 2 },
         { title: 'Specifications', cols: 10, rows: 2 },
         { title: 'Colors', cols: 9, rows: 2 },

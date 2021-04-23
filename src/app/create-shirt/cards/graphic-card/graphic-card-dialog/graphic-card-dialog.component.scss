@@ -1,0 +1,78 @@
+@import './../../../../../myColors.scss';
+@import '~@angular/material/theming';
+$primary: mat-palette($my-brand-color, 700, 500, 900);
+
+.grid-container {
+    margin: 10px;
+}
+
+.dashboard-card {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+}
+
+.dashboard-card-content {
+    text-align: center;
+}
+
+.mat-h1 {
+    margin-bottom: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+.dashboard-card:hover {
+    border-style: solid;
+    border-width: 4px;
+    border-color: mat-color($primary);
+    margin: -4px;
+}
+
+.dashboard-card-content img {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.upload-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Reveal */
+.hvr-reveal {
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    border-radius: 4px;
+}
+
+.hvr-reveal:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-color: #2098D1;
+    border-style: solid;
+    border-width: 0;
+    -webkit-transition-property: border-width;
+    transition-property: border-width;
+    -webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    border-radius: 4px;
+}
+
+.hvr-reveal:hover:before, .hvr-reveal:focus:before, .hvr-reveal:active:before {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    border-width: 4px;
+    border-radius: 4px;
+}
