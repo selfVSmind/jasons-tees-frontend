@@ -13,7 +13,7 @@
       </mat-horizontal-stepper>
     </div>
    
-    <mat-grid-list cols="18" rowHeight="175px">
+    <mat-grid-list [cols]="numColumns" [rowHeight]="rowHeight">
       <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
         <mat-card class="dashboard-card">
           <mat-card-header>
@@ -29,9 +29,13 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
-            <div *ngIf="card.title=='Demographic'"><app-demographic-card></app-demographic-card></div>
-            <div *ngIf="card.title=='Specifications'"><app-specifications-card></app-specifications-card></div>
-            <div *ngIf="card.title=='Custom Graphic'"><app-graphic-card></app-graphic-card></div>
+            <ng-container *ngIf="card.title=='Custom Graphic'"><app-graphic-card (graphicChosen)="graphicChosen($event)"></app-graphic-card></ng-container>
+            <ng-container *ngIf="card.title=='Demographic'"><app-demographic-card (demographicChosen)="demographicChosen($event)"></app-demographic-card></ng-container>
+            <ng-container *ngIf="card.title=='Specifications'"><app-specifications-card></app-specifications-card></ng-container>
+
+            <!-- <ng-container *ngIf="card.title=='Colors'"><app-colors-card *ngFor=" all the colors you could ever wantzzz"></app-colors-card></ng-container> -->
+            <ng-container *ngIf="card.title=='Colors'"><app-colors-card [selectedCncCutFile]="selectedGraphic" [tShirtBlanks]="getTShirtBlanksForDemographic()" [htvOptions]="this.databaseService.getHtvOptions()"></app-colors-card></ng-container>
+
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>

@@ -1,4 +1,3 @@
-import { WHITE_ON_BLACK_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
@@ -14,9 +13,9 @@ export class TShirtBlankCountsChartComponent implements OnInit {
 
   public ngOnChanges(changes: SimpleChanges) {
     if ('prices' in changes) {
-        this.barChartData[0].data = changes['prices'].currentValue;
-     }
-  }       
+      if(this.barChartData) this.barChartData[0].data = changes['prices'].currentValue;
+    };
+  };    
 
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -51,12 +50,12 @@ export class TShirtBlankCountsChartComponent implements OnInit {
     }
   ];
 
-  public barChartData: ChartDataSets[] = [];
+  public barChartData: ChartDataSets[];
 
   constructor() { }
 
   ngOnInit() {
-    this.barChartData.push({ data: this.prices });
+    this.barChartData = [{ data: this.prices }];
   }
 
 }

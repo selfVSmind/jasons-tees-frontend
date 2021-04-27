@@ -1,27 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { HttpClient } from '@angular/common/http';
-
-interface TShirtBlank {
-  id: string,
-  name: string,
-  frontPic: {url: string, id: string},
-  backPic: {url: string, id: string},
-  color: string,
-  countS: string,
-  countM: string,
-  countL: string,
-  countXL: string,
-  count2XL: string,
-  count3XL: string,
-  count4XL: string,
-  count5XL: string,
-  count6XL: string,
-  count7XL: string,
-  mockupOverlayGeometry: string,
-  modelId: string
-};
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { TShirtBlank, DatabaseService } from '../database.service';
 
 @Component({
   selector: 'app-view-inventory',
@@ -87,20 +67,12 @@ export class ViewInventoryComponent implements OnInit {
     })
   );
 
-  url = "https://t-shirts.jasonlambert.io/getTshirtBlankData";
-
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private http: HttpClient
+    private databaseService: DatabaseService
   ) {
-    this.http.get(this.url).toPromise()
-    .then(jsonData => {
-      console.log(JSON.stringify(jsonData, null, 2));
-      if(jsonData.hasOwnProperty('data')) {
-        this.tShirtBlanks = jsonData['data'];
-        this.setBlank(this.tShirtBlanks[0]);
-      }
-    });
+    this.tShirtBlanks = databaseService.getTShirtBlanks();
+    this.setBlank(this.tShirtBlanks[0]);
   }
 
   ngOnInit(): void {
@@ -112,7 +84,7 @@ export class ViewInventoryComponent implements OnInit {
   }
 
   newBlankSelection(selectedBlankId) {
-    console.log(selectedBlankId);
+    // console.log(selectedBlankId);
     this.tShirtBlanks.forEach((blank) => {
       if(selectedBlankId === blank.id) {
         this.setBlank(blank);

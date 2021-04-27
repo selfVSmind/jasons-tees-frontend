@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-demographic-card',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemographicCardComponent implements OnInit {
 
+  @Output("demographicChosen") demographicChosen: EventEmitter<string> = new EventEmitter();
+
   demoOptions: Array<string> = ["Male", "Female"];
 
   constructor() { }
@@ -14,8 +16,8 @@ export class DemographicCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectionChanged(item) {
-    console.log("Selected demographic: ", item.value);
+  selectionChangedNotifyParent(demo) {
+    this.demographicChosen.emit(demo);
   }
 
 }

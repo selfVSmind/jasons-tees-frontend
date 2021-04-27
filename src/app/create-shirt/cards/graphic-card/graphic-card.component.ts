@@ -1,14 +1,9 @@
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { CncCutFile } from 'src/app/database.service';
 import { GraphicCardDialogComponent } from './graphic-card-dialog/graphic-card-dialog.component';
-
-interface CncCutFile {
-  id: string,
-  name: string,
-  imgUrl: string
-};
 
 @Component({
   selector: 'app-graphic-card',
@@ -18,13 +13,18 @@ interface CncCutFile {
 export class GraphicCardComponent implements OnInit {
 
   isXSmall: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.XSmall);
-
+  @Output("graphicChosen") graphicChosen: EventEmitter<CncCutFile> = new EventEmitter();
+  
   constructor(
     public dialog: MatDialog,
     private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
+  }
+
+  graphicChosenNotifyParent(graphicId) {
+    this.graphicChosen.emit(graphicId);
   }
 
   cutFile: CncCutFile;
@@ -54,7 +54,7 @@ export class GraphicCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe(cutFile => {
       smallDialogSubscription.unsubscribe();
       this.cutFile = cutFile;
-      console.log(cutFile.name, "graphic has been selected.")
+      this.graphicChosenNotifyParent(cutFile);
     });
   };
 

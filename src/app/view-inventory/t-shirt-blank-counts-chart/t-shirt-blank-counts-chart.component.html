@@ -1,4 +1,4 @@
-<div class="ng2-chart">
+<div class="ng2-chart" *ngIf="barChartData[0]">
   <canvas baseChart
     [datasets]="barChartData"
     [labels]="barChartLabels"

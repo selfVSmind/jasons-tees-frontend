@@ -1,3 +1,3 @@
 <mat-button-toggle-group>
-    <mat-button-toggle *ngFor="let option of demoOptions" (change)="selectionChanged($event)" [value]="option">{{ option }}</mat-button-toggle>
+    <mat-button-toggle *ngFor="let option of demoOptions" (change)="selectionChangedNotifyParent($event.value)" [value]="option">{{ option }}</mat-button-toggle>
 </mat-button-toggle-group>

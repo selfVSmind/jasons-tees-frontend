@@ -4,12 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { BreakpointObserver } from '@angular/cdk/layout';
-
-interface CncCutFile {
-  id: string,
-  name: string,
-  imgUrl: string
-};
+import { CncCutFile, DatabaseService } from 'src/app/database.service';
 
 @Component({
   selector: 'app-graphic-card-dialog',
@@ -20,7 +15,6 @@ export class GraphicCardDialogComponent implements OnInit {
 
   cutFiles: Array<CncCutFile>;
   selection: CncCutFile;
-  url = "https://t-shirts.jasonlambert.io/getCncCutFileData";
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe('(max-width: 960px)')
     .pipe(
@@ -31,18 +25,10 @@ export class GraphicCardDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<GraphicCardDialogComponent>,
     private http: HttpClient,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private databaseService: DatabaseService
   ) {
-    this.http.get(this.url).toPromise()
-    .then(jsonData => {
-      // console.log(JSON.stringify(jsonData, null, 2));
-      if(jsonData.hasOwnProperty('data')) {
-        this.cutFiles = jsonData['data'];
-        this.cutFiles.forEach((cutFile) => {
-          cutFile.imgUrl = 'https://t-shirts.jasonlambert.io/' + cutFile.imgUrl;
-        })
-      }
-    });
+    this.cutFiles = databaseService.getCncCutFiles();
   }
 
   ngOnInit(): void {
