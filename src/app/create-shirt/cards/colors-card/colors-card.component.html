@@ -8,7 +8,7 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        
+
         <br>
 
         <mat-form-field appearance="outline">
@@ -21,9 +21,7 @@
         </mat-form-field>
     </div>
 
-    <div class="mockup-image-container">
-        <ng-container *ngIf="mockupImageUrl">
-            <img [src]="mockupImageUrl">
-        </ng-container>
-    </div>
+    <ng-container *ngIf="mockupImageUrl">
+        <img mat-card-image [src]="mockupImageUrl">
+    </ng-container>
 </div>

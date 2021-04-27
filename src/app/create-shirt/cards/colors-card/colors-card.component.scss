@@ -22,6 +22,7 @@
 .mockup-image-container img {
     padding-left: 15px;
     max-width: 90%;
+    border-radius: 4px;
 }
 
 .parent-flex-container {
@@ -29,6 +30,35 @@
     align-items: stretch;
 }
 
+::ng-deep mat-card {
+    overflow: hidden !important;
+}
+
 mat-form-field {
     width: 100% !important;
 }
+
+@media screen and (max-width: 960px) {
+    .parent-flex-container {
+        flex-direction: column;
+    }
+
+    .form-container {
+        width: 100%;
+    }
+    
+    .mockup-image-container {
+        width: 100%;
+    }
+
+    .mockup-image-container img {
+        padding-left: 0px;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .parent-flex-container img {
+        border-radius: 4px !important;
+    }
+}
+  

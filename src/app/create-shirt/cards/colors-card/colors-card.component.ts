@@ -43,7 +43,7 @@ export class ColorsCardComponent implements OnInit, OnChanges {
   getMockupUrl = "https://t-shirts.jasonlambert.io/newGetMockupWithColor";
 
   private updateMockupImage() {
-    if(this.selectedCncCutFile) {
+    if(this.selectedCncCutFile && this.selectedHtvId && this.selectedBlankId) {
       this.http.post<any>(this.getMockupUrl, { tShirtModelId: this.selectedBlankId, vinylModelId: this.selectedHtvId, cncCutFileId: this.selectedCncCutFile.id }).toPromise()
       .then(response => { // this should be the url to the newly created image
         console.log(JSON.stringify(response, null, 2));

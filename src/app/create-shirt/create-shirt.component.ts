@@ -23,7 +23,7 @@ export class CreateShirtComponent {
           { title: 'Custom Graphic', cols: 18, rows: 2 },
           { title: 'Demographic', cols: 18, rows: 1 },
           { title: 'Specifications', cols: 18, rows: 2 },
-          { title: 'Colors', cols: 18, rows: 2 }
+          { title: 'Colors', cols: 18, rows: 4 }
         ];
       }
 
