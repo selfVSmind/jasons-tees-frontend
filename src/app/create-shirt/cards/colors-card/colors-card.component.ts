@@ -1,5 +1,8 @@
+import { BreakpointState, Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 import { CncCutFile, HtvOption, TShirtBlank } from '../../../database.service';
 
 @Component({
@@ -9,10 +12,19 @@ import { CncCutFile, HtvOption, TShirtBlank } from '../../../database.service';
 })
 export class ColorsCardComponent implements OnInit, OnChanges {
 
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe('(max-width: 960px)')
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+
   @Input() tShirtBlanks: Array<TShirtBlank>;
   @Input() htvOptions: Array<HtvOption>;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private breakpointObserver: BreakpointObserver
+  ) { }
 
   ngOnInit(): void {
   }

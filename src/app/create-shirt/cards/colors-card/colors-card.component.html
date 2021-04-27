@@ -21,7 +21,9 @@
         </mat-form-field>
     </div>
 
-    <ng-container *ngIf="mockupImageUrl">
-        <img mat-card-image [src]="mockupImageUrl">
-    </ng-container>
+    <div [class]="(isHandset$ | async ) ? '' : 'mockup-image-container'">
+        <ng-container *ngIf="mockupImageUrl">
+            <img mat-card-image [src]="mockupImageUrl">
+        </ng-container>
+    </div>
 </div>
