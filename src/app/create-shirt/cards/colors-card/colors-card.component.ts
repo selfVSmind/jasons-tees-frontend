@@ -21,7 +21,7 @@ export class ColorsCardComponent implements OnInit, OnChanges {
     if(changes['selectedCncCutFile']) {
       // deal with asynchronous Observable result
       this.selectedCncCutFile = changes.selectedCncCutFile.currentValue;
-      console.log(JSON.stringify(changes, null, 2));
+      this.updateMockupImage();
     }
   }
 
@@ -32,12 +32,12 @@ export class ColorsCardComponent implements OnInit, OnChanges {
 
   newBlankSelection(selectedBlankId) {
     this.selectedBlankId = selectedBlankId;
-    if(this.selectedHtvId) this.updateMockupImage();
+    this.updateMockupImage();
   }
 
   newHtvSelection(htvId) {
     this.selectedHtvId = htvId;
-    if(this.selectedBlankId) this.updateMockupImage();
+    this.updateMockupImage();
   }
 
   getMockupUrl = "https://t-shirts.jasonlambert.io/newGetMockupWithColor";
@@ -47,7 +47,7 @@ export class ColorsCardComponent implements OnInit, OnChanges {
       this.http.post<any>(this.getMockupUrl, { tShirtModelId: this.selectedBlankId, vinylModelId: this.selectedHtvId, cncCutFileId: this.selectedCncCutFile.id }).toPromise()
       .then(response => { // this should be the url to the newly created image
         console.log(JSON.stringify(response, null, 2));
-        if(response.hasOwnProperty['mockupUrl'])
+        if(response.hasOwnProperty('mockupUrl'))
           this.mockupImageUrl = "https://t-shirts.jasonlambert.io/" + response.mockupUrl;
       })
     }

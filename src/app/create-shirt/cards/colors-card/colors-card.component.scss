@@ -7,3 +7,28 @@
     transform: translate(0, 50%);
     margin-right: 10px;
 }
+
+.form-container {
+    width: 50%;
+}
+
+.mockup-image-container {
+    text-align: center;
+    float: right;
+    width: 50%;
+    // transform: translate(0, -50%);
+}
+
+.mockup-image-container img {
+    padding-left: 15px;
+    max-width: 90%;
+}
+
+.parent-flex-container {
+    display: flex;
+    align-items: stretch;
+}
+
+mat-form-field {
+    width: 100% !important;
+}

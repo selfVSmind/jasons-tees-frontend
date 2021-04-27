@@ -31,8 +31,9 @@ export class CreateShirtComponent {
         { title: 'Custom Graphic', cols: 4, rows: 2 },
         { title: 'Demographic', cols: 4, rows: 2 },
         { title: 'Specifications', cols: 10, rows: 2 },
-        { title: 'Colors', cols: 9, rows: 2 },
-        { title: 'Colors', cols: 9, rows: 2 }
+        { title: 'Colors', cols: 6, rows: 2 },
+        { title: 'Colors', cols: 6, rows: 2 },
+        { title: 'Colors', cols: 6, rows: 2 }
       ];
     })
   );
