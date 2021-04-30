@@ -8,8 +8,8 @@ $primary: mat-palette($my-brand-color, 700, 500, 900);
   src: url("../../assets/turok-font.otf") format("opentype");
 }
   
-::ng-deep a {
-    color: white !important;
+::ng-deep .section-content a, ::ng-deep .section-content a:link, ::ng-deep .section-content a:visited, ::ng-deep .section-content a:active {
+    color: mat-color($primary) !important;
 }
 
 .about-hero-header {
