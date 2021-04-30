@@ -5,7 +5,7 @@
 <div class="about-main-container">
     <div *ngFor="let section of aboutPageTextSections" class="section">
         <div class="section-image">
-            <img src="assets/images/jasons-tees-logo.png">
+            <img [src]="section.image">
         </div>
         <div class="section-content">
             <div class="header">

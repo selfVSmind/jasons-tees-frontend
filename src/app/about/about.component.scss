@@ -24,11 +24,10 @@ $primary: mat-palette($my-brand-color, 700, 500, 900);
     padding-top: 10vh;
     text-align: center;
     max-height: 40vh;
-    max-width: 100%;
+    max-width: 80%;
 }
 
 .about-main-container {
-    padding-top: 15vh;
     text-align: justify;
     text-justify: inter-word;
     margin: auto;
@@ -56,16 +55,45 @@ $primary: mat-palette($my-brand-color, 700, 500, 900);
     min-height: 275px;
 }
 
-.about-main-container .section-image .section-image {
+.section-image img {
+    max-height: 200px;
     max-width: 100%;
+    background-color: map-get($mat-dark-theme-background, background);
 }
 
-.about-main-container .section:nth-child(odd) .section-image { 
-    float: right;
-    margin-left: 30px;
+@media only screen and (min-width: 960px) {
+    .about-main-container {
+        padding-top: 15vh;
+    }
+
+    .about-main-container .section:nth-child(odd) .section-image { 
+        float: right;
+        margin-left: 30px;
+        border-left: 2px solid;
+    }
+
+    .about-main-container .section:nth-child(odd) .section-image  img { 
+        padding-left: 30px;
+    }
+    
+    .about-main-container .section:nth-child(even) .section-image {
+        float: left;
+        margin-right: 30px;
+        border-right: 2px solid;
+    }
+
+    .about-main-container .section:nth-child(even) .section-image img {
+        padding-right: 30px;
+    }
 }
 
-.about-main-container .section:nth-child(even) .section-image {
-    float: left;
-    margin-right: 30px;
+@media only screen and (max-width: 960px) {
+    .about-main-container .section { 
+        text-align: center;
+    }
+
+    .about-main-container .section img { 
+        margin-bottom: 40px;
+        margin-top: 40px;
+    }
 }
