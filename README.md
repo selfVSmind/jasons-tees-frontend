@@ -4,7 +4,7 @@ This project is the new Angular driven front-end to my [tshirt-ebay-lister](http
 
 ## A work in progress
 
-This is still very much a work in progress, however, most of the original features are here and look better than ever thanks to the Angular Material modules!
+This is still very much a work in progress, however, most of the original features are here and look better than ever thanks to the Angular Material modules! If you are interested in the Ebay functionality, you'll have to use the original version still. All of that work is already done on the back end, however, so it shouldn't be long before I delete these sentences.
 
 ## The old version is still there
 
