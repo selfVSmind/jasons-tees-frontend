@@ -5,23 +5,23 @@
   <mat-card class="connect-card">
     <div class="grandaddy">
 
-        <a href="https://auth.ebay.com/oauth2/authorize?client_id=JasonLam-tshirtse-PRD-3d4b2781a-56d032fa&response_type=code&redirect_uri=Jason_Lambert-JasonLam-tshirt-tbtsnlieu&scope=https://api.ebay.com/oauth/api_scope https://api.ebay.com/oauth/api_scope/sell.marketing.readonly https://api.ebay.com/oauth/api_scope/sell.marketing https://api.ebay.com/oauth/api_scope/sell.inventory.readonly https://api.ebay.com/oauth/api_scope/sell.inventory https://api.ebay.com/oauth/api_scope/sell.account.readonly https://api.ebay.com/oauth/api_scope/sell.account https://api.ebay.com/oauth/api_scope/sell.fulfillment.readonly https://api.ebay.com/oauth/api_scope/sell.fulfillment https://api.ebay.com/oauth/api_scope/sell.analytics.readonly https://api.ebay.com/oauth/api_scope/sell.finances https://api.ebay.com/oauth/api_scope/sell.payment.dispute https://api.ebay.com/oauth/api_scope/commerce.identity.readonly">
-            <button mat-raised-button>
-                Connect Your Ebay Account
-            </button>
-        </a>
-        
-        <div class="parent-container">
-            <div class="child-element">
-                <img src="assets/images/jasons-tees-logo.png">
-            </div>
-            <div class="child-element arrow">
-                <img [src]="ebayConnected ? 'assets/images/arrow-check.svg' : 'assets/images/arrow-cross.svg'">
-            </div>
-            <div class="child-element">
-                <img src="assets/images/ebay-logo.svg">
-            </div>
-        </div>
+      <a *ngIf="!ebayConnected" href="https://auth.ebay.com/oauth2/authorize?client_id=JasonLam-tshirtse-PRD-3d4b2781a-56d032fa&response_type=code&redirect_uri=Jason_Lambert-JasonLam-tshirt-tbtsnlieu&scope=https://api.ebay.com/oauth/api_scope https://api.ebay.com/oauth/api_scope/sell.marketing.readonly https://api.ebay.com/oauth/api_scope/sell.marketing https://api.ebay.com/oauth/api_scope/sell.inventory.readonly https://api.ebay.com/oauth/api_scope/sell.inventory https://api.ebay.com/oauth/api_scope/sell.account.readonly https://api.ebay.com/oauth/api_scope/sell.account https://api.ebay.com/oauth/api_scope/sell.fulfillment.readonly https://api.ebay.com/oauth/api_scope/sell.fulfillment https://api.ebay.com/oauth/api_scope/sell.analytics.readonly https://api.ebay.com/oauth/api_scope/sell.finances https://api.ebay.com/oauth/api_scope/sell.payment.dispute https://api.ebay.com/oauth/api_scope/commerce.identity.readonly">
+          <button mat-raised-button>
+              Connect Your Ebay Account
+          </button>
+      </a>
+
+      <div class="parent-container">
+          <div class="child-element">
+              <img src="assets/images/jasons-tees-logo.png">
+          </div>
+          <div class="child-element arrow">
+              <img [src]="ebayConnected ? 'assets/images/arrow-check.svg' : 'assets/images/arrow-cross.svg'">
+          </div>
+          <div class="child-element">
+              <img src="assets/images/ebay-logo.svg">
+          </div>
+      </div>
 
     </div>
   </mat-card>
