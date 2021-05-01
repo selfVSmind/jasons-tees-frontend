@@ -56,7 +56,7 @@ $primary: mat-palette($my-brand-color, 700, 500, 900);
 }
 
 .section-image img {
-    max-height: 200px;
+    max-height: 300px;
     max-width: 100%;
     background-color: map-get($mat-dark-theme-background, background);
 }
@@ -86,14 +86,24 @@ $primary: mat-palette($my-brand-color, 700, 500, 900);
         padding-right: 30px;
     }
 
-    .section p {
-        padding-bottom: 50px !important;
+    .about-main-container .section { 
+        margin-bottom: 200px !important;
     }
 }
 
+.about-main-container .section {
+    font-size: 150%;
+    letter-spacing: 0.5px;
+    line-height: 120%;
+}
+
 @media only screen and (max-width: 960px) {
-    .about-main-container .section { 
+    .about-main-container .section .section-image { 
         text-align: center;
+    }
+
+    .about-main-container .section { 
+        margin-top: 75px !important;
     }
 
     .about-main-container .section img { 
