@@ -41,19 +41,19 @@ export class ColorsCardComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes) {
     if(changes['selectedCncCutFile']) {
-      // deal with asynchronous Observable result
       this.selectedCncCutFile = changes.selectedCncCutFile.currentValue;
       this.updateMockupImage();
     }
     if(changes['blankId']) {
-      // deal with asynchronous Observable result
       this.blankId = changes.blankId.currentValue;
       this.updateMockupImage();
     }
     if(changes['htvId']) {
-      // deal with asynchronous Observable result
       this.htvId = changes.htvId.currentValue;
       this.updateMockupImage();
+    }
+    if(changes['index']) {
+      this.index = changes.index.currentValue;
     }
   }
 

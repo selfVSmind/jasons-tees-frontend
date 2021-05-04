@@ -46,7 +46,6 @@ export class CreateShirtComponent {
 
   colorsCards = this.breakpointObserver.observe(['(max-width:570px)', '(max-width: 770px)', '(max-width: 960px)', '(max-width: 1200px)', '(max-width: 1400px)', '(max-width: 1600px)']).pipe(
     map((results) => {
-      console.log(JSON.stringify(results, null, 2));
       if(results.breakpoints['(max-width:570px)']) {
         return { cols: 24, rows: 27, plusCols: 4 };
       }
@@ -123,5 +122,13 @@ export class CreateShirtComponent {
   addAnotherVariation() {
     this.variationOptionsArray.push({ index: this.usedIndex++, blankId: "", htvId: "" });
     // this.colorsCards.push(this.colorsCards[0]);
+  }
+
+  deleteVariation(index) {
+    this.variationOptionsArray.splice(index, 1);
+    this.usedIndex--;
+    for(let i = 0; i < this.variationOptionsArray.length; ++i) {
+      this.variationOptionsArray[i].index = i;
+    }    
   }
 }
