@@ -22,7 +22,7 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
-            <ng-container *ngIf="card.title=='Custom Graphic'"><app-graphic-card (graphicChosen)="graphicChosen($event)"></app-graphic-card></ng-container>
+            <ng-container *ngIf="card.title=='Custom Graphic'"><app-graphic-card (graphicChosen)="graphicChosen($event)" [selectedGraphic]="selectedGraphic"></app-graphic-card></ng-container>
             <ng-container *ngIf="card.title=='Demographic'"><app-demographic-card (demographicChosen)="demographicChosen($event)"></app-demographic-card></ng-container>
             <ng-container *ngIf="card.title=='Specifications'"><app-specifications-card></app-specifications-card></ng-container>
           </mat-card-content>

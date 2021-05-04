@@ -101,13 +101,11 @@ export class CreateShirtComponent {
   // passed up from child: colors-card
   tShirtBlankChosen(parameters: { index: number, blankId: string }) {
     this.variationOptionsArray[parameters.index].blankId = parameters.blankId;
-    console.log("Selected BlankId: ", parameters.blankId, " for Variation ", parameters.index, ".");
   }
 
   // passed up from child: colors-card
   htvChosen(parameters: { index: number, htvId: string }) {
     this.variationOptionsArray[parameters.index].htvId = parameters.htvId;
-    console.log("Selected HtvId: ", parameters.htvId, " for Variation ", parameters.index, ".");
   }
 
   getTShirtBlanksForDemographic() {
