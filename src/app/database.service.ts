@@ -26,6 +26,10 @@ export class DatabaseService {
       if(jsonData.hasOwnProperty('data')) {
         this.tShirtBlanks = jsonData['data'];
       }
+      this.tShirtBlanks.sort((a, b) => {
+        if(a.name == b.name) return  0;
+        return (a.name > b.name) ? 1 : -1;
+      });
     });
 
     this.http.get(this.cncCutFilesUrl).toPromise()
@@ -45,6 +49,10 @@ export class DatabaseService {
       if(jsonData.hasOwnProperty('data')) {
         this.htvOptions = jsonData['data'];
       }
+      this.htvOptions.sort((a, b) => {
+        if(a.color == b.color) return  0;
+        return (a.color > b.color) ? 1 : -1;
+      });
     });
 
   }
