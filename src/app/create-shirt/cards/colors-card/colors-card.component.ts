@@ -68,13 +68,17 @@ export class ColorsCardComponent implements OnInit, OnChanges {
 
   getMockupUrl = "https://t-shirts.jasonlambert.io/newGetMockupWithColor";
 
+  loading = false;
+
   private updateMockupImage() {
     if(this.selectedCncCutFile && this.htvId && this.blankId) {
+      this.loading = true;
       this.http.post<any>(this.getMockupUrl, { index: this.index, tShirtModelId: this.blankId, vinylModelId: this.htvId, cncCutFileId: this.selectedCncCutFile.id }).toPromise()
       .then(response => { // this should be the url to the newly created image
         // console.log(JSON.stringify(response, null, 2));
         if(response.hasOwnProperty('mockupUrl'))
           this.mockupImageUrl = "https://t-shirts.jasonlambert.io/" + response.mockupUrl;
+          this.loading = false;
       })
     }
   }

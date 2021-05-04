@@ -22,8 +22,9 @@
     </div>
 
     <div [class]="(isHandset$ | async ) ? '' : 'mockup-image-container'">
-        <ng-container *ngIf="mockupImageUrl">
+        <ng-container *ngIf="mockupImageUrl && !loading">
             <img mat-card-image [src]="mockupImageUrl">
         </ng-container>
+        <mat-spinner *ngIf="loading"></mat-spinner>
     </div>
 </div>
