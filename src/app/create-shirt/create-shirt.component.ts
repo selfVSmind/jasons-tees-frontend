@@ -124,11 +124,15 @@ export class CreateShirtComponent {
     // this.colorsCards.push(this.colorsCards[0]);
   }
 
-  deleteVariation(index) {
+  actuallyDeleteVariation(index) {
     this.variationOptionsArray.splice(index, 1);
     this.usedIndex--;
     for(let i = 0; i < this.variationOptionsArray.length; ++i) {
       this.variationOptionsArray[i].index = i;
     }    
+  }
+
+  deleteVariation(index) {
+    if(this.variationOptionsArray.length > 1) this.actuallyDeleteVariation(index);
   }
 }
