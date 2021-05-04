@@ -29,7 +29,7 @@ export class ColorsCardComponent implements OnInit, OnChanges {
   @Input() htvId: string;
   // selectedBlankId: string;
   // selectedHtvId: string;
-  mockupImageUrl: any;
+  mockupImageUrl: any;// = "assets/images/sampleShirtFront.jpg";
 
   constructor(
     private http: HttpClient,
@@ -59,14 +59,11 @@ export class ColorsCardComponent implements OnInit, OnChanges {
 
   newBlankSelection(selectedBlankId) {
     this.tShirtBlankChosen.emit({ index: this.index, blankId: selectedBlankId });
-    // this.selectedBlankId = selectedBlankId;
-    // this.updateMockupImage();
+    this.tShirtBlanks.forEach(blank => {if(blank.id == selectedBlankId) this.mockupImageUrl = blank.frontPic.url+"?fm=jpg&w=400"})
   }
 
   newHtvSelection(htvId) {
     this.htvChosen.emit({ index: this.index, htvId: htvId });
-    // this.selectedHtvId = htvId;
-    // this.updateMockupImage();
   }
 
   getMockupUrl = "https://t-shirts.jasonlambert.io/newGetMockupWithColor";
