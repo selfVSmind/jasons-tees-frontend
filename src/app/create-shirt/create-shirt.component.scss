@@ -1,5 +1,15 @@
 @import '~@angular/material/theming';
 
+.plus {
+  // margin-left: 10px;
+  // margin-top: -30px;
+}
+
+.plus-card {
+  background: none;
+  box-shadow: none;
+}
+
 .grid-container {
   margin: 10px;
 }
@@ -44,3 +54,4 @@
     display: none;
   }
 }
+

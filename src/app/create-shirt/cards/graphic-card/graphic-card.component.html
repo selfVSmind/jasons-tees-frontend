@@ -6,5 +6,5 @@
 <div *ngIf="cutFile">
     {{ cutFile.name }}
     <br>
-    <img [src]="cutFile.imgUrl">
+    <img [src]="cutFile.imgUrl" (click)="openDialog()">
 <div>

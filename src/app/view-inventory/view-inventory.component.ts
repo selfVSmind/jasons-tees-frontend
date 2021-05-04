@@ -13,39 +13,6 @@ export class ViewInventoryComponent implements OnInit {
   currentBlankPrices: Array<number>;
   tShirtBlanks: Array<TShirtBlank>;
   imageWidth = 300;
-
-  /** Based on the screen size, switch from standard to one column per row */
-  // cards = this.breakpointObserver.observe([
-  //     Breakpoints.Handset,
-  //     Breakpoints.Tablet
-  //   ]).subscribe((state: BreakpointState) => {
-  //     if (state.breakpoints[Breakpoints.Handset]) {
-  //       return [
-  //         { title: 'Counts', cols: 1, rows: 1 },
-  //         { title: 'Front', cols: 1, rows: 2 },
-  //         { title: 'Back', cols: 1, rows: 2 }
-  //       ];
-  //     }
-  //     if (state.breakpoints[Breakpoints.Tablet]) {
-  //       return [
-  //         { title: 'Counts', cols: 1, rows: 1 },
-  //         { title: 'Front', cols: 1, rows: 2 },
-  //         { title: 'Back', cols: 1, rows: 2 }
-  //       ];
-  //     }
-  //     return [
-  //       { title: 'Front', cols: 2, rows: 2 },
-  //       { title: 'Select', cols: 2, rows: 1 },
-  //       { title: 'Counts', cols: 4, rows: 2 },
-  //       { title: 'Back', cols: 1, rows: 1 },
-  //       { title: 'Card 5', cols: 1, rows: 1 }
-  //     ];
-  //   });
-  
-  
-  
-  
-  
   
   cards = this.breakpointObserver.observe('(max-width: 960px)').pipe(
     map(({ matches }) => {

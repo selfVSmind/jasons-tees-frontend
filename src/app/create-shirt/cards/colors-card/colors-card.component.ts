@@ -1,6 +1,6 @@
 import { BreakpointState, Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { CncCutFile, HtvOption, TShirtBlank } from '../../../database.service';
@@ -18,8 +18,18 @@ export class ColorsCardComponent implements OnInit, OnChanges {
       shareReplay()
     );
 
+
+  @Output("tShirtBlankChosen") tShirtBlankChosen: EventEmitter<any> = new EventEmitter();
+  @Output("htvChosen") htvChosen: EventEmitter<any> = new EventEmitter();
   @Input() tShirtBlanks: Array<TShirtBlank>;
   @Input() htvOptions: Array<HtvOption>;
+  @Input() selectedCncCutFile: CncCutFile;
+  @Input() index: number;
+  @Input() blankId: string;
+  @Input() htvId: string;
+  // selectedBlankId: string;
+  // selectedHtvId: string;
+  mockupImageUrl: any;
 
   constructor(
     private http: HttpClient,
@@ -35,30 +45,37 @@ export class ColorsCardComponent implements OnInit, OnChanges {
       this.selectedCncCutFile = changes.selectedCncCutFile.currentValue;
       this.updateMockupImage();
     }
+    if(changes['blankId']) {
+      // deal with asynchronous Observable result
+      this.blankId = changes.blankId.currentValue;
+      this.updateMockupImage();
+    }
+    if(changes['htvId']) {
+      // deal with asynchronous Observable result
+      this.htvId = changes.htvId.currentValue;
+      this.updateMockupImage();
+    }
   }
 
-  selectedBlankId: string;
-  selectedHtvId: string;
-  @Input() selectedCncCutFile: CncCutFile;
-  mockupImageUrl: any;
-
   newBlankSelection(selectedBlankId) {
-    this.selectedBlankId = selectedBlankId;
-    this.updateMockupImage();
+    this.tShirtBlankChosen.emit({ index: this.index, blankId: selectedBlankId });
+    // this.selectedBlankId = selectedBlankId;
+    // this.updateMockupImage();
   }
 
   newHtvSelection(htvId) {
-    this.selectedHtvId = htvId;
-    this.updateMockupImage();
+    this.htvChosen.emit({ index: this.index, htvId: htvId });
+    // this.selectedHtvId = htvId;
+    // this.updateMockupImage();
   }
 
   getMockupUrl = "https://t-shirts.jasonlambert.io/newGetMockupWithColor";
 
   private updateMockupImage() {
-    if(this.selectedCncCutFile && this.selectedHtvId && this.selectedBlankId) {
-      this.http.post<any>(this.getMockupUrl, { tShirtModelId: this.selectedBlankId, vinylModelId: this.selectedHtvId, cncCutFileId: this.selectedCncCutFile.id }).toPromise()
+    if(this.selectedCncCutFile && this.htvId && this.blankId) {
+      this.http.post<any>(this.getMockupUrl, { tShirtModelId: this.blankId, vinylModelId: this.htvId, cncCutFileId: this.selectedCncCutFile.id }).toPromise()
       .then(response => { // this should be the url to the newly created image
-        console.log(JSON.stringify(response, null, 2));
+        // console.log(JSON.stringify(response, null, 2));
         if(response.hasOwnProperty('mockupUrl'))
           this.mockupImageUrl = "https://t-shirts.jasonlambert.io/" + response.mockupUrl;
       })

@@ -25,23 +25,24 @@ mat-form-field {
     width: 100% !important;
 }
 
-@media screen and (min-width: 960px) {
-    .mockup-image-container {
-        text-align: center;
-        float: right;
-        width: 50%;
-        transform: translate(0, -15px);
-    }
+// @media screen and (min-width: 960px) {
+//     .mockup-image-container {
+//         text-align: center;
+//         float: right;
+//         width: 50%;
+//         // transform: translate(0, -15px);
+//         transform: translate(0, 10px);
+//     }
     
-    .mockup-image-container img {
-        padding-left: 15px;
-        max-width: 90%;
-        // border-radius: 4px !important;
-    }
-}
+//     .mockup-image-container img {
+//         padding-left: 15px;
+//         max-width: 85%;
+//         // border-radius: 4px !important;
+//     }
+// }
 
 
-@media screen and (max-width: 960px) {
+// @media screen and (max-width: 960px) {
     .parent-flex-container {
         flex-direction: column;
     }
@@ -50,5 +51,5 @@ mat-form-field {
         width: 100%;
         margin-bottom: 15px;
     }
-}
+// }
   

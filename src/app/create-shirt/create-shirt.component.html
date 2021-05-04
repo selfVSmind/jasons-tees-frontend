@@ -19,26 +19,53 @@
           <mat-card-header>
             <mat-card-title>
               {{card.title}}
-              <!-- <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu" xPosition="before">
-                <button mat-menu-item>Expand</button>
-                <button mat-menu-item>Remove</button>
-              </mat-menu> -->
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
             <ng-container *ngIf="card.title=='Custom Graphic'"><app-graphic-card (graphicChosen)="graphicChosen($event)"></app-graphic-card></ng-container>
             <ng-container *ngIf="card.title=='Demographic'"><app-demographic-card (demographicChosen)="demographicChosen($event)"></app-demographic-card></ng-container>
             <ng-container *ngIf="card.title=='Specifications'"><app-specifications-card></app-specifications-card></ng-container>
-
-            <!-- <ng-container *ngIf="card.title=='Colors'"><app-colors-card *ngFor=" all the colors you could ever wantzzz"></app-colors-card></ng-container> -->
-            <ng-container *ngIf="card.title=='Colors'"><app-colors-card [selectedCncCutFile]="selectedGraphic" [tShirtBlanks]="getTShirtBlanksForDemographic()" [htvOptions]="this.databaseService.getHtvOptions()"></app-colors-card></ng-container>
-
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
+
+      <!-- now for the color combinations cards -->
+      <mat-grid-tile *ngFor="let variationOptions of variationOptionsArray" [colspan]="(colorsCards | async).cols" [rowspan]="(colorsCards | async).rows">
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              Colors
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item>Expand</button>
+                <button mat-menu-item>Remove</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <app-colors-card 
+              [selectedCncCutFile]="selectedGraphic"
+              [index]="variationOptions.index"
+              [blankId]="variationOptions.blankId"
+              [htvId]="variationOptions.htvId"
+              [tShirtBlanks]="getTShirtBlanksForDemographic()"
+              [htvOptions]="this.databaseService.getHtvOptions()"
+              (tShirtBlankChosen)="tShirtBlankChosen($event)"
+              (htvChosen)="htvChosen($event)">
+            </app-colors-card>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+  
+
+      <mat-grid-tile *ngIf="variationOptionsArray.length > 0" [colspan]="(colorsCards | async).plusCols" [rowspan]="(colorsCards | async).plusRows" (click)="addAnotherVariation()" class="plus" title="Create Another Variation">
+        <mat-card class="plus-card dashboard-card">
+          <img mat-card-image src="assets/images/plus.svg">
+        </mat-card>
+      </mat-grid-tile>
+
     </mat-grid-list>
   </div>
   

@@ -80,8 +80,8 @@ export interface HtvOption {
 export interface TShirtBlank {
   id: string,
   name: string,
-  frontPic: {url: string, id: string},
-  backPic: {url: string, id: string},
+  frontPic: { url: string, id: string },
+  backPic: { url: string, id: string },
   color: string,
   countS: string,
   countM: string,
@@ -94,5 +94,6 @@ export interface TShirtBlank {
   count6XL: string,
   count7XL: string,
   mockupOverlayGeometry: string,
-  modelId: string
+  modelId: string,
+  model: { demographic: string }
 };
