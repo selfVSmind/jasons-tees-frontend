@@ -14,8 +14,8 @@ export class CreateShirtComponent {
   selectedDemographic: string;
 
   /** Based on the screen size, switch from standard to one column per row */
-  rowHeight = "175px";
-  numColumns = "18";
+  rowHeight = "25px";
+  numColumns = "24";
 
   usedIndex = 0;
   variationOptionsArray: Array<{ index: number, blankId: string, htvId: string }> = [];
@@ -28,29 +28,50 @@ export class CreateShirtComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Custom Graphic', cols: 18, rows: 2 },
-          { title: 'Specifications', cols: 18, rows: 2 },
-          { title: 'Demographic', cols: 18, rows: 1 },
-          { title: 'Publish', cols: 18, rows: 1 }
+          { title: 'Custom Graphic', cols: 24, rows: 14 },
+          { title: 'Specifications', cols: 24, rows: 10 },
+          { title: 'Demographic', cols: 24, rows: 7 },
+          { title: 'Publish', cols: 24, rows: 7 }
         ];
       }
 
       return [
-        { title: 'Custom Graphic', cols: 4, rows: 2 },
-        { title: 'Specifications', cols: 10, rows: 2 },
-        { title: 'Demographic', cols: 4, rows: 1 },
-        { title: 'Publish', cols: 4, rows: 1 }
+        { title: 'Custom Graphic', cols: 8, rows: 14 },
+        { title: 'Specifications', cols: 10, rows: 14 },
+        { title: 'Demographic', cols: 6, rows: 7 },
+        { title: 'Publish', cols: 6, rows: 7 }
       ];
     })
   );
 
-  colorsCards = this.breakpointObserver.observe('(max-width: 960px)').pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return { cols: 18, rows: 5, plusCols: 3, plusRows: 1 };
+  colorsCards = this.breakpointObserver.observe(['(max-width:570px)', '(max-width: 770px)', '(max-width: 960px)', '(max-width: 1200px)', '(max-width: 1400px)', '(max-width: 1600px)']).pipe(
+    map((results) => {
+      console.log(JSON.stringify(results, null, 2));
+      if(results.breakpoints['(max-width:570px)']) {
+        return { cols: 24, rows: 27, plusCols: 4 };
       }
 
-      return { cols: 6, rows: 5, plusCols: 1, plusRows: 5 };
+      if(results.breakpoints['(max-width: 770px)']) {
+        return { cols: 24, rows: 33, plusCols: 3 };
+      }
+
+      if(results.breakpoints['(max-width: 960px)']) {
+        return { cols: 12, rows: 25, plusCols: 3 };
+      }
+
+      if(results.breakpoints['(max-width: 1200px)']) {
+        return { cols: 8, rows: 19, plusCols: 3 };
+      }
+
+      if(results.breakpoints['(max-width: 1400px)']) {
+        return { cols: 8, rows: 22, plusCols: 2 };
+      }
+
+      if(results.breakpoints['(max-width: 1600px)']) {
+        return { cols: 6, rows: 21, plusCols: 2 };
+      }
+
+      return { cols: 6, rows: 24, plusCols: 2 };
     })
   );
 

@@ -60,7 +60,7 @@
       </mat-grid-tile>
   
 
-      <mat-grid-tile *ngIf="variationOptionsArray.length > 0" [colspan]="(colorsCards | async).plusCols" [rowspan]="(colorsCards | async).plusRows" (click)="addAnotherVariation()" class="plus" title="Create Another Variation">
+      <mat-grid-tile *ngIf="variationOptionsArray.length > 0" [colspan]="(colorsCards | async).plusCols" [rowspan]="(colorsCards | async).rows" (click)="addAnotherVariation()" class="plus" title="Create Another Variation">
         <mat-card class="plus-card dashboard-card">
           <img mat-card-image src="assets/images/plus.svg">
         </mat-card>
