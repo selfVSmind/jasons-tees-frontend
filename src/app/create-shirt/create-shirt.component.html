@@ -24,7 +24,8 @@
           <mat-card-content class="dashboard-card-content">
             <ng-container *ngIf="card.title=='Custom Graphic'"><app-graphic-card (graphicChosen)="graphicChosen($event)" [selectedGraphic]="selectedGraphic"></app-graphic-card></ng-container>
             <ng-container *ngIf="card.title=='Demographic'"><app-demographic-card (demographicChosen)="demographicChosen($event)" [selectedDemographic]="selectedDemographic"></app-demographic-card></ng-container>
-            <ng-container *ngIf="card.title=='Specifications'"><app-specifications-card></app-specifications-card></ng-container>
+            <ng-container *ngIf="card.title=='Specifications'"><app-specifications-card [ebayTitle]="ebayTitle" [ebayTheme]="ebayTheme" (ebayTitleChange)="ebayTitleChange($event)" (ebayThemeChange)="ebayThemeChange($event)"></app-specifications-card></ng-container>
+            <ng-container *ngIf="card.title=='Publish'"><app-publish-card [ebayTitle]="ebayTitle" [ebayTheme]="ebayTheme" [selectedDemographic]="selectedDemographic" [selectedGraphic]="selectedGraphic" [getVariationOptionsArray]="getVariationOptionsArray()"></app-publish-card></ng-container>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>

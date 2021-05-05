@@ -1,4 +1,4 @@
-import { BreakpointState, Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -41,19 +41,13 @@ export class ColorsCardComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes) {
     if(changes['selectedCncCutFile']) {
-      this.selectedCncCutFile = changes.selectedCncCutFile.currentValue;
       this.updateMockupImage();
     }
     if(changes['blankId']) {
-      this.blankId = changes.blankId.currentValue;
       this.updateMockupImage();
     }
     if(changes['htvId']) {
-      this.htvId = changes.htvId.currentValue;
       this.updateMockupImage();
-    }
-    if(changes['index']) {
-      this.index = changes.index.currentValue;
     }
   }
 
@@ -76,9 +70,10 @@ export class ColorsCardComponent implements OnInit, OnChanges {
       this.http.post<any>(this.getMockupUrl, { index: this.index, tShirtModelId: this.blankId, vinylModelId: this.htvId, cncCutFileId: this.selectedCncCutFile.id }).toPromise()
       .then(response => { // this should be the url to the newly created image
         // console.log(JSON.stringify(response, null, 2));
-        if(response.hasOwnProperty('mockupUrl'))
+        if(response.hasOwnProperty('mockupUrl')) {
           this.mockupImageUrl = "https://t-shirts.jasonlambert.io/" + response.mockupUrl;
           this.loading = false;
+        }
       })
     }
   }

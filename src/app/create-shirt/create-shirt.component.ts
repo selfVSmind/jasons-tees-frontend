@@ -12,6 +12,8 @@ export class CreateShirtComponent {
 
   selectedGraphic: CncCutFile;
   selectedDemographic: string;
+  ebayTitle: string;
+  ebayTheme: string;
 
   /** Based on the screen size, switch from standard to one column per row */
   rowHeight = "25px";
@@ -95,6 +97,8 @@ export class CreateShirtComponent {
 
   graphicChosen(graphic: CncCutFile) {
     this.selectedGraphic = graphic;
+    this.ebayTitle = graphic.name.replace(/[^0-9a-z ]/gi, '') + ' Custom T-Shirt';
+    this.ebayTheme = graphic.name.replace(/[^0-9a-z ]/gi, '');
     console.log("Selected Graphic: ", graphic.name);
   }
 
@@ -108,6 +112,14 @@ export class CreateShirtComponent {
     this.variationOptionsArray[parameters.index].htvId = parameters.htvId;
   }
 
+  ebayTitleChange(title) {
+    this.ebayTitle = title;
+  }
+
+  ebayThemeChange(theme) {
+    this.ebayTheme = theme;
+  }
+
   getTShirtBlanksForDemographic() {
     let availableBlanks = [...this.databaseService.getTShirtBlanks()];
     if(!this.selectedDemographic) return availableBlanks; // we should never arrive here but.. you know whatever
@@ -115,6 +127,10 @@ export class CreateShirtComponent {
       if(availableBlanks[i].model.demographic != this.selectedDemographic) availableBlanks.splice(i, 1);
     }
     return availableBlanks;
+  }
+
+  getVariationOptionsArray() {
+    return this.variationOptionsArray;
   }
 
   addAnotherVariation() {

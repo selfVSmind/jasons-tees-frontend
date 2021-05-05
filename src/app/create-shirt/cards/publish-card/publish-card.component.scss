@@ -1,0 +1,7 @@
+@import './../../../../myColors.scss';
+@import '~@angular/material/theming';
+$primary: mat-palette($my-brand-color, 700, 500, 900);
+
+::ng-deep app-publish-card a, ::ng-deep .section-content a:link, ::ng-deep .section-content a:visited, ::ng-deep .section-content a:active {
+    color: mat-color($primary) !important;
+}

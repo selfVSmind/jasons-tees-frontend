@@ -39,6 +39,7 @@ import { GraphicCardComponent } from './create-shirt/cards/graphic-card/graphic-
 import { SpecificationsCardComponent } from './create-shirt/cards/specifications-card/specifications-card.component';
 import { GraphicCardDialogComponent } from './create-shirt/cards/graphic-card/graphic-card-dialog/graphic-card-dialog.component';
 import { ColorsCardComponent } from './create-shirt/cards/colors-card/colors-card.component';
+import { PublishCardComponent } from './create-shirt/cards/publish-card/publish-card.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { ColorsCardComponent } from './create-shirt/cards/colors-card/colors-car
     SpecificationsCardComponent,
     GraphicCardDialogComponent,
     ColorsCardComponent,
+    PublishCardComponent,
   ],
   imports: [
     BrowserModule,

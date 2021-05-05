@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-specifications-card',
   templateUrl: './specifications-card.component.html',
   styleUrls: ['./specifications-card.component.scss']
 })
-export class SpecificationsCardComponent implements OnInit {
+export class SpecificationsCardComponent {
+
+  @Output("ebayTitleChange") ebayTitleChange: EventEmitter<string> = new EventEmitter();
+  @Output("ebayThemeChange") ebayThemeChange: EventEmitter<string> = new EventEmitter();
+  @Input() ebayTitle: string;
+  @Input() ebayTheme: string;
 
   fields = [
     { htmlName: "ebay-name", prettyName: "Ebay Title", onChangeFunction: "onTitleChange" },
@@ -14,15 +19,12 @@ export class SpecificationsCardComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
   onTitleChange(title) {
-    console.log(title);
+    this.ebayTitleChange.emit(title);
   }
 
   onThemeChange(theme) {
-    console.log(theme);
+    this.ebayThemeChange.emit(theme);
   }
 
 }

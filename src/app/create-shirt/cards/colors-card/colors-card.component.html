@@ -1,8 +1,8 @@
 <div class="parent-flex-container">
-    <div class="form-container">
+    <div *ngIf="!loading" class="form-container">
         <mat-form-field appearance="outline">
             <mat-label>T-Shirt Blank</mat-label>
-            <mat-select (selectionChange)="newBlankSelection($event.value)">
+            <mat-select (selectionChange)="newBlankSelection($event.value)" [value]="blankId">
                 <mat-option *ngFor="let blank of tShirtBlanks" [value]="blank.id">
                     {{ blank.name }}
                 </mat-option>
@@ -13,7 +13,7 @@
 
         <mat-form-field appearance="outline">
             <mat-label>Vinyl Color</mat-label>
-            <mat-select (selectionChange)="newHtvSelection($event.value)">
+            <mat-select (selectionChange)="newHtvSelection($event.value)" [value]="htvId">
                 <mat-option *ngFor="let htv of htvOptions" [value]="htv.id">
                     {{ htv.color }} <div class="my-htv-option" [style]="'background-color: #' + htv.pantoneEquivalentValue + ';'"> </div>
                 </mat-option>

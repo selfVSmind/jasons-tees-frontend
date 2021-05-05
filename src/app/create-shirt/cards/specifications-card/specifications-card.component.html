@@ -1,8 +1,10 @@
 <mat-form-field appearance="outline" class="make-full-width" (change)="onTitleChange($event.target.value)">
     <mat-label>Ebay Title</mat-label>
-    <input matInput>
+    <input *ngIf="ebayTitle" matInput [value]="ebayTitle">
+    <input *ngIf="!ebayTitle" matInput>
 </mat-form-field>
 <mat-form-field appearance="outline" class="make-full-width" (change)="onThemeChange($event.target.value)">
     <mat-label>Ebay Theme</mat-label>
-    <input matInput>
+    <input *ngIf="ebayTheme" matInput [value]="ebayTheme">
+    <input *ngIf="!ebayTheme" matInput>
 </mat-form-field>
