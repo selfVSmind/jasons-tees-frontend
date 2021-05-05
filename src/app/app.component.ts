@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { DatabaseService } from './database.service';
 
 @Component({
@@ -12,12 +11,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private databaseService: DatabaseService,
-    private router: Router
-  ) {
-    router.events.subscribe((route:any) => {
-      if(route.url === '/') this.router.navigate(['/about']);
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
   }

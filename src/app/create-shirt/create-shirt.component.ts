@@ -22,10 +22,6 @@ export class CreateShirtComponent {
   usedIndex = 0;
   variationOptionsArray: Array<{ index: number, blankId: string, htvId: string }> = [];
 
-  // colorsCards = [
-  //   { title: 'Colors', cols: 6, rows: 5 }
-  // ];
-  
   cards = this.breakpointObserver.observe('(max-width: 960px)').pipe(
     map(({ matches }) => {
       if (matches) {
@@ -135,7 +131,6 @@ export class CreateShirtComponent {
 
   addAnotherVariation() {
     this.variationOptionsArray.push({ index: this.usedIndex++, blankId: "", htvId: "" });
-    // this.colorsCards.push(this.colorsCards[0]);
   }
 
   actuallyDeleteVariation(index) {

@@ -1,6 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { CncCutFile, HtvOption, TShirtBlank } from '../../../database.service';
@@ -10,7 +10,7 @@ import { CncCutFile, HtvOption, TShirtBlank } from '../../../database.service';
   templateUrl: './colors-card.component.html',
   styleUrls: ['./colors-card.component.scss']
 })
-export class ColorsCardComponent implements OnInit, OnChanges {
+export class ColorsCardComponent implements OnChanges {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe('(max-width: 960px)')
     .pipe(
@@ -35,9 +35,6 @@ export class ColorsCardComponent implements OnInit, OnChanges {
     private http: HttpClient,
     private breakpointObserver: BreakpointObserver
   ) { }
-
-  ngOnInit(): void {
-  }
 
   ngOnChanges(changes) {
     if(changes['selectedCncCutFile']) {
