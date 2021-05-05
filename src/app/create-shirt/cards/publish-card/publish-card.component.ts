@@ -51,10 +51,7 @@ export class PublishCardComponent {
 
     this.http.post<any>(this.publishToEbayUrl, this.buildPostBundle()).toPromise()
     .then(response => {
-      console.log(JSON.stringify(response, null, 2));
-      if(response.hasOwnProperty('mockupUrl')) {
-        // kablamey
-      }
+      console.log("Something is probably happening!!! How exciting...");
     })
   }
 }

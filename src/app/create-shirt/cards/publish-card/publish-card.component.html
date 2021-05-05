@@ -1,6 +1,10 @@
-<p *ngIf="ebayConnected">Your ebay account is connected.</p>
+<ng-container *ngIf="ebayConnected">
+    <p>Your ebay account is connected.</p>
+    <button *ngIf="readyToPublish()" mat-raised-button (click)="publishToEbay()">
+        Publish To Ebay
+    </button>
+</ng-container>
 <ng-container *ngIf="!ebayConnected">
     <p>Your ebay account is NOT connected.</p>
     <p>Fix this in <a routerLink="/settings">settings</a>.</p>
 </ng-container>
-<p *ngIf="readyToPublish()" (click)="publishToEbay()">publish</p>
