@@ -1,6 +1,6 @@
 # Jason's Tees
 
-This project is the new Angular driven front-end to my [tshirt-ebay-lister](https://github.com/selfVSmind/tshirt-ebay-lister) project. 
+This project is the new Angular driven front-end to my [jasons-tees-backend](https://github.com/selfVSmind/jasons-tees-backend) project. 
 
 ## A work in progress
 
