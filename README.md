@@ -4,7 +4,7 @@ This project is the new Angular driven front-end to my [jasons-tees-backend](htt
 
 ## Take a look at the new frontend
 
-[The website is live right here.](https://t-shirts.jasonlambert.io).
+[The website is live right here](https://t-shirts.jasonlambert.io).
 
 ## The old version is still there
 
