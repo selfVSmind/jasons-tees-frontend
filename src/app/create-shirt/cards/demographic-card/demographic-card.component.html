@@ -1,3 +1,7 @@
 <mat-button-toggle-group [value]="selectedDemographic">
     <mat-button-toggle *ngFor="let option of demoOptions" (change)="selectionChangedNotifyParent($event.value)" [value]="option">{{ option }}</mat-button-toggle>
 </mat-button-toggle-group>
+<ng-container *ngIf="!selectedDemographic">
+    <br><br>
+    <p>You must select a demographic.</p>
+</ng-container>
