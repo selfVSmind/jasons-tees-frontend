@@ -29,7 +29,7 @@ export class ViewInventoryComponent implements OnInit {
         { title: 'Select', cols: 2, rows: 1 },
         { title: 'Counts', cols: 4, rows: 2 },
         { title: 'Back', cols: 1, rows: 1 },
-        { title: 'Card 5', cols: 1, rows: 1 }
+        { title: 'Smile', cols: 1, rows: 1 }
       ];
     })
   );

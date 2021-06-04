@@ -31,6 +31,9 @@
           <div *ngIf="card.title=='Counts'" class="counts-chart">
             <app-t-shirt-blank-counts-chart [prices]="currentBlankPrices"></app-t-shirt-blank-counts-chart>
           </div>
+          <div *ngIf="card.title=='Smile'">
+            :)
+          </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
